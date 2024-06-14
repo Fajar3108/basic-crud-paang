@@ -2,7 +2,7 @@
     <h1 class="title">Tambah Produk</h1>
     <a href="/">Kembali</a>
 
-    <form method="POST" action="<?= $baseURL ?>controllers/create-product.php">
+    <form method="POST" action="<?= $baseURL ?>//controllers/create-product.php">
         <div class="form-group">
             <label for="name">Nama Produk</label>
             <input type="text" name="name" id="name" required>

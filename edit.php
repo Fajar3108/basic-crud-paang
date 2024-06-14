@@ -9,7 +9,7 @@ $product = $result->fetch_assoc();
 <h1 class="title">Tambah Produk</h1>
 <a href="/">Kembali</a>
 
-<form method="POST" action="<?= $baseURL ?>controllers/edit-product.php?id=<?= $id ?>">
+<form method="POST" action="<?= $baseURL ?>/controllers/edit-product.php?id=<?= $id ?>">
     <div class="form-group">
         <label for="name">Nama Produk</label>
         <input type="text" name="name" id="name" value="<?= htmlspecialchars($product['name']) ?>" required>
