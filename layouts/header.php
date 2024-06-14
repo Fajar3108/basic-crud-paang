@@ -77,3 +77,5 @@
 <body>
 
 <div class="container">
+
+<?php $baseURL = dirname($_SERVER['SCRIPT_NAME']); ?>
