@@ -1,15 +1,33 @@
+<?php include_once "layouts/header.php" ?>
+
 <?php
 require "./database/database.php";
+
 $id = $_GET['id'];
 $result = $mysqli->query("SELECT * FROM products WHERE id = $id");
 $product = $result->fetch_assoc();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = (int)$_GET['id'];
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $price = (int)$_POST['price'];
+
+    $stmt = $mysqli->prepare('UPDATE products SET name = ?, description = ?, price = ? WHERE id = ?');
+    $stmt->bind_param('ssii', $name, $description, $price, $id);
+    $stmt->execute();
+    $stmt->close();
+
+    header("Location: $baseURL");
+    exit;
+}
+
 ?>
 
-<?php include_once "layouts/header.php" ?>
 <h1 class="title">Tambah Produk</h1>
 <a href="/">Kembali</a>
 
-<form method="POST" action="<?= $baseURL ?>/controllers/edit-product.php?id=<?= $id ?>">
+<form method="POST" action="">
     <div class="form-group">
         <label for="name">Nama Produk</label>
         <input type="text" name="name" id="name" value="<?= htmlspecialchars($product['name']) ?>" required>
